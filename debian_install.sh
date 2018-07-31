@@ -12,6 +12,7 @@ chown ssedemo:users images
 cd images
 mkdir samples
 chown ssedemo:users samples
+cd samples
 sudo -u ssedemo wget https://github.com/dmandrioli/sse-extra/raw/master/pointcloud.pcd
 sudo -u ssedemo wget https://github.com/dmandrioli/sse-extra/raw/master/bitmap.png
 cd ../../semantic-segmentation-editor
