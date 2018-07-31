@@ -21,5 +21,18 @@ sudo -u ssedemo sed 's_\(input-folder.*\)XXXXX_\1/home/ssedemo/images_' -i /home
 sudo -u ssedemo sed 's_\(output-folder.*\)XXXXX_\1/home/ssedemo/pcd_' -i /home/ssedemo/semantic-segmentation-editor/settings.json
 sudo -u ssedemo sed 's/\(.*saveData.*\){/\1{return;/' -i /home/ssedemo/semantic-segmentation-editor/server/main.js
 sudo -u ssedemo sed 's/\(.*\/save.*\){/\1{return;/' -i /home/ssedemo/semantic-segmentation-editor/server/files.js
+cat > /home/ssedemo/semantic-segmentation-editor/client/g.html << EOL
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123193983-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-123193983-1');
+</script>
+</head>
+EOL
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
-sudo -u ssedemo meteor --settings settings.json
+while :; do sudo -u ssedemo meteor --production --settings settings.json; done&
