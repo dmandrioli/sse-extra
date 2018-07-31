@@ -2,6 +2,7 @@
 apt-get update
 apt-get -y install git
 useradd -g users -d /home/ssedemo -s /bin/bash ssedemo
+rm -rf /home/ssedemo
 mkdir /home/ssedemo
 chown ssedemo:users /home/ssedemo
 curl https://install.meteor.com/ | sh
