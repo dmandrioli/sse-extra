@@ -35,4 +35,5 @@ cat > /home/ssedemo/semantic-segmentation-editor/client/g.html << EOL
 </head>
 EOL
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
+killall -9 node mongod
 while :; do sudo -u ssedemo meteor --production --settings settings.json; done&
